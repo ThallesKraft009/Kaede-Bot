@@ -14,7 +14,8 @@ blacklist: {
   economia: {
     money: { type: Number, default: 0 },
     banco: { type: Number, default: 0 },
-    daily: { type: Number, default: 0}
+    daily: { type: Number, default: 0 },
+    roubo: { type: Number, default: 0 }
   },
              
 });
