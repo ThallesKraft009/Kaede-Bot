@@ -109,11 +109,11 @@ if (comando === "apostar") {
 
       let membro = interaction.options.getUser("membro");
 
-      if (membro === interaction.user) return interaction.reply({
+      /*if (membro === interaction.user) return interaction.reply({
         content: `Você não pode apostar com você mesmo!`,
         ephemeral: true
       })
-
+*/
     let userdb_2 = await client.userdb.findOne({
          userID: membro.id
      })
@@ -208,6 +208,16 @@ await client.userdb.updateOne({
 }
 
   });
+
+collector.on('end', async(i) => {
+	
+   interaction.editReply({
+     content: `<:kaede_2:1059170168770670592> | O tempo máximo que esse botão ficou ativo chegou ao limite...use o comando novamente!`,
+    components: []
+   })
+
+});
+
 }
 
 //================= | ROUBAR | ================
