@@ -6,9 +6,9 @@ module.exports = {
   type: 1,
   default_member_permissions: "ManageGuild",
 
-  run: async(client, interaction) => {
+  run: async(client, interaction, userdb) => {
 
-    let botoes = new ActionRowBuilder().addComponents(
+let botoes = new ActionRowBuilder().addComponents(
       new ButtonBuilder()
 					.setCustomId(`automod_${interaction.user.id}`)
 					.setLabel('Logs')
@@ -48,6 +48,7 @@ module.exports = {
     ],
     components: [botoes]
   })
-    
+
+
   }
 }

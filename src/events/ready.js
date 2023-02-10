@@ -38,5 +38,6 @@ setInterval(() => {
 	client.user.setStatus(status[s])
 	s++;
 }, 30 * 1000); 
-  
+
+
 })
