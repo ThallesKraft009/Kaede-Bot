@@ -4,6 +4,10 @@ const userset = new Schema({
   userID: { type: String },
   premium: { type: Boolean, default: false },
 
+  perfil: {
+    sobremim: { type: String, default: `Use /perfil sobremim pra alterar seu sobremim`}
+  },
+
   
 blacklist: {
     banido: { type: Boolean, defaut: false },
