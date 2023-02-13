@@ -1,5 +1,5 @@
 const canvas = require("canvas");
-const { AttachmentBuilder } = require("discord.js");
+const { AttachmentBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } = require("discord.js");
 const { Image } = require("canvas");
 
 module.exports = {
@@ -19,11 +19,36 @@ module.exports = {
           required: false
         }
       ]
+    },{
+      name: "sobremim",
+      description: "Altere seu sobremim",
+      type: 1
     }
   ],
   run: async(client, interaction) => {
 
 let comando = interaction.options.getSubcommand()
+
+  if (comando === "sobremim") {
+    let modal = new ModalBuilder()
+			.setCustomId(`sobremim_${interaction.user.id}`)
+.setTitle('Editar Perfil');
+
+    let sobremim = new TextInputBuilder()
+      .setCustomId("1")
+      .setLabel("Escreva seu sobremim")
+      .setMinLength("5")
+      .setMaxLength("100")
+    
+    let sobremim_ = new ActionRowBuilder()
+      .addComponents(sobremim)
+
+
+   modal.addComponents(sobremim_);
+
+     await interaction.showModal(modal);
+    
+  }
 
 if (comando === "ver") {
    let Canvas = canvas.createCanvas(900, 500)

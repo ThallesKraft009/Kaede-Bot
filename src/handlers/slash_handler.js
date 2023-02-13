@@ -15,7 +15,7 @@ const config = require("../config.js")
 const CLIENT_ID = config.client_id;
 
 
-const rest = new REST({ version: '9' }).setToken(TOKEN);
+const rest = new REST({ version: '10' }).setToken(TOKEN);
 
 module.exports = (client) => {
 	const slashCommands = []; 
