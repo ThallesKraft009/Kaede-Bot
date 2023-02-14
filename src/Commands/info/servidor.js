@@ -21,11 +21,12 @@ module.exports = {
        let embed = new EmbedBuilder()
        .setDescription(`${interaction.guild.name}`)
        .setImage(`${interaction.guild.iconURL()}`)
-
+       .setColor("Blue")
        
       interaction.reply({
         embeds: [embed]
       })
+      
     }
   }
 }

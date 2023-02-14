@@ -30,6 +30,23 @@ module.exports = {
 let comando = interaction.options.getSubcommand()
 
   if (comando === "sobremim") {
+
+let membro = interaction.user
+    
+let userdb = await client.userdb.findOne({
+         userID: membro.id
+     })
+      
+     if(!userdb){
+         const newuser = new client.userdb({ userID: membro.id })
+         await newuser.save();
+         
+         userdb = await client.userdb.findOne({ userID: membro.id })
+          }
+
+let sobremim_antigo = userdb.perfil.sobremim;
+    if (sobremim_antigo === "Use /perfil sobremim pra alterar seu sobremim") sobremim_antigo = `Digita seu sobremim aqui`
+    
     let modal = new ModalBuilder()
 			.setCustomId(`sobremim_${interaction.user.id}`)
 .setTitle('Editar Perfil');
@@ -37,8 +54,10 @@ let comando = interaction.options.getSubcommand()
     let sobremim = new TextInputBuilder()
       .setCustomId("1")
       .setLabel("Escreva seu sobremim")
-      .setMinLength("5")
-      .setMaxLength("100")
+    	.setStyle(TextInputStyle.Short)
+      .setMaxLength(60)
+      .setMinLength(5)
+    	.setPlaceholder(`${sobremim_antigo}`)
     
     let sobremim_ = new ActionRowBuilder()
       .addComponents(sobremim)
