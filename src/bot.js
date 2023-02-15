@@ -67,5 +67,6 @@ client.categories =  fs.readdirSync("./src/Commands/");
 });
 
 
+require("./Utils/giveawaySetup.js")(client)
 
 client.login(token);

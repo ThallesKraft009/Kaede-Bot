@@ -64,4 +64,31 @@ if (msg.content === `${client.user} segredo`) {
       content: `Descubra todos os segredos que eu tenho aqui!\n https://youtu.be/TGQo2SyDWW0`
     })
   }
+
+
+
+  if (msg.content === `${client.user} reiniciar`){
+
+    if (msg.author.id === "882913524291088384") {
+
+    msg.reply({
+      content: `Reiniciando....`
+    }).then(m => {
+
+/*require("../handlers/slash_handler.js")(client);
+require("../handlers/event_handler.js")(client);
+require("../handlers/functions.js")(client);*/
+
+     client.destrory()
+      require("../../index.js")
+
+          m.edit({
+            content: `${client.commands.size} subcommands logados & ${client.events.size} eventos ativados.`
+          })
+
+      console.clear()
+      console.log(msg.author.tag + " Reiniciou o bot")
+     })
+    }
+  }
 })

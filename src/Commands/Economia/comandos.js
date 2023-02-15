@@ -3,7 +3,8 @@ const { EmbedBuilder,
        ButtonBuilder,
        ActionRowBuilder, 
        ButtonStyle,
-       ComponentType } = require("discord.js");
+       ComponentType, 
+      StringSelectMenuBuilder } = require("discord.js");
 
 module.exports = {
   name: "kaedecoins",
@@ -97,6 +98,10 @@ module.exports = {
          required: true
         }
       ]
+    },{
+      name: "loja",
+      description: "Visite a loja diária da Kaede",
+      type: 1
     }
   ],
 
@@ -104,16 +109,53 @@ module.exports = {
   let comando = interaction.options.getSubcommand()
 
 
+    if (comando === "loja") {
+
+let menu = new ActionRowBuilder()
+      .addComponents(
+        new StringSelectMenuBuilder()
+        .setCustomId(`loja_${interaction.user.id}`)
+        .setPlaceholder("Loja da Kaede")
+        .addOptions(
+          {
+             label: "Banners pra Perfil",
+             description: "A seção de banners pra o comando de perfil",
+            value: "banner"
+          },{
+            label: "Funções exclusivas",
+            description: "Compre sistemas ou funções pra seu servidor",
+            value: "functions"
+          }
+        )
+        )
+
+let embed = new EmbedBuilder()
+    .setTitle("Loja da Kaede")
+    .setDescription("Compre itens pra usar na economia e no servidor :D")
+    .setThumbnail("https://cdn.discordapp.com/attachments/1059093244014764053/1075153654660730950/1f6d2.png")
+    .setColor("Green")
+
+interaction.reply({
+  embeds: [
+    embed
+  ],
+  components: [menu]
+})
+
+
+    }
+
+
 if (comando === "apostar") {
   
 
       let membro = interaction.options.getUser("membro");
 
-      /*if (membro === interaction.user) return interaction.reply({
+      if (membro === interaction.user) return interaction.reply({
         content: `Você não pode apostar com você mesmo!`,
         ephemeral: true
       })
-*/
+
     let userdb_2 = await client.userdb.findOne({
          userID: membro.id
      })
