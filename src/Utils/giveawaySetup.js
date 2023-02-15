@@ -109,4 +109,5 @@ const manager = new GiveawayManagerWithOwnDatabase(client, {
 });
 
 client.giveawaysManager = manager;
+  client.giveaway_config = require("./giveaway-config.js");
 }
