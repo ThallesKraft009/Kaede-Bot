@@ -5,6 +5,7 @@ const messages = require("../../Utils/giveaway-config.js");
 module.exports = {
   name: "sorteio",
   description: "Crie vários sorteios em seu servidor",
+  default_member_permissions: "ManageMessages",
   type: 1,
 
   options: [
@@ -35,10 +36,56 @@ module.exports = {
           required: false
         }
       ]
+    },{
+      name: "reroll",
+      description: "Faça outra pessoa ganhar o sorteio",
+      type: 1,
+      options: [
+        {
+          name: "id",
+          description: "O ID da mensagem do sorteio",
+          type: 3,
+          required: true
+        }
+      ]
+    },{
+      name: "encerrar",
+      description: "Encerre o sorteio atual",
+      type: 1,
+      options: [
+        {
+          name: "id",
+          description: "O ID da mensagem do sorteio",
+          type: 3,
+          required: true
+        }
+      ]
     }
   ],
   run: async(client, interaction) => {
 let comando = interaction.options.getSubcommand()
+
+    if (comando === "reroll") {
+
+let id = interaction.options.getString("id");
+
+      client.giveawaysManager
+            .reroll(id, {
+              messages: messages.messages
+            })
+            .then(() => {
+                interaction.reply({
+                  content: "Prontinho! Fiz outra pessoa ganhar o sorteio!",
+                  ephemeral: true
+                });
+            })
+            .catch((err) => {
+                interaction.reply({
+                  content: "Ocorreu um erro ao tentar fazer outra pessoa ganhar",
+                  ephemeral: true
+                })
+            });
+    }
 
     if (comando === "criar") {
 
@@ -52,9 +99,6 @@ tempo = ms(`${tempo}`)
           content: `Não conseguir indentificar o tempo que você colocou.`,
           ephemeral: true
         })
-
-
-
 
   let winnerCount = interaction.options.getNumber("ganhadores") || 1;
 
