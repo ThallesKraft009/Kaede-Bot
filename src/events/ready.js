@@ -39,5 +39,14 @@ setInterval(() => {
 	s++;
 }, 30 * 1000); 
 
+let embed = new EmbedBuilder().setTitle("Kaede Ready()").setDescription (`Acabei de ser iniciada no ping: **\`${client.ws.ping}ms\`** dentro de ${client.guilds.cache.size} servidores!`).setColor("Green")
+
+
+  let chat = client.channels.cache.get("1075836843318317106");
+  chat.send({
+    embeds: [
+     embed
+    ]
+  })
 
 })
