@@ -33,7 +33,7 @@ function Menu() {
             <span class="jumbotron-t">Kaede bot</span>
             <p class="jumbotron-d">Uma bot multifuncional pra seu servidor!</p>
             <div class="jumbotron-buttons">
-              <button class="btn" onclick="location.href='#features'">Comandos</button>
+              <button class="btn" href="/comandos">Comandos</button>
               <button class="btn blue" onclick="location.href='#'">Convite</button>
             </div>
           </div>
