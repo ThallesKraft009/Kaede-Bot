@@ -1,10 +1,9 @@
-import Menu from "./dashboard/menu.js";
+import Menu from "./dashboard/menu";
+
 
 function App() {
   return (
-    <div className="App">
      <Menu></Menu>
-    </div>
   );
 }
 
