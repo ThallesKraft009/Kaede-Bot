@@ -80,10 +80,12 @@ require("./Utils/giveawaySetup.js")(client)
 
 client.login(token);
 
-app.use(express.static(path.join(__dirname, "/website/build")));
+app.use(express.static(path.join(__dirname, "/App/website/build")));
 
 app.get("/", async(req, res) => {
-  res.sendFile(path.join(__dirname, "/website/build", "index.html"))
+  res.sendFile(path.join(__dirname, "/App/website/build", "index.html"))
 })
 
-server.listen(port)
+server.listen(process.env.PORT, async() => {
+  console.log(require("colors").cyan("React conectado!"))
+})
