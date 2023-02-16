@@ -67,6 +67,7 @@ let embed = new EmbedBuilder()
       
       let apiPing = Date.now() - interaction.createdTimestamp;
 
+
       interaction.reply({
         content: `Ping?`
       }).then(async() => {

@@ -98,10 +98,6 @@ module.exports = {
          required: true
         }
       ]
-    },{
-      name: "loja",
-      description: "Visite a loja diária da Kaede",
-      type: 1
     }
   ],
 

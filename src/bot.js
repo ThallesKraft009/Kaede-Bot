@@ -5,6 +5,15 @@ const {
   Partials,
 } = require("discord.js");
 const fs = require("fs");
+const express = require("express");
+const http = require("http");
+const { Server } = require("ws");
+const path = require('path');
+
+const port = 3000;
+const app = express()
+const server = http.createServer(app);
+const wss = new Server({ server });
 
 const EventEmitter = require('events');
 const emitter = new EventEmitter()
@@ -70,3 +79,11 @@ client.categories =  fs.readdirSync("./src/Commands/");
 require("./Utils/giveawaySetup.js")(client)
 
 client.login(token);
+
+app.use(express.static(path.join(__dirname, "/website/build")));
+
+app.get("/", async(req, res) => {
+  res.sendFile(path.join(__dirname, "/website/build", "index.html"))
+})
+
+server.listen(port)

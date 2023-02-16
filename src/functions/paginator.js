@@ -1,10 +1,10 @@
-const { EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, ComponentsType } = require("discord.js");
+const { EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, ComponentType } = require("discord.js");
 
 module.exports = async(client) => {
   client.paginas = async function (interaction, pages, time = 60000) {
 
     if (!interaction) return console.log("Interação não definida!")
-   if (!page) return console.log("Páginas não definidas!")
+   if (!pages) return console.log("Páginas não definidas!")
 
     if (!Array.isArray(pages)) return console.log("As páginas não são uma ARRAY.")
 
@@ -52,8 +52,8 @@ module.exports = async(client) => {
     })
 
 
-    const collector = await currentPage.createMessageCollector({
-      componentsType: ComponentsType.Button,
+    const collector = await interaction.channel.createMessageCollector({
+      componentType: ComponentType.Button,
       time
     });
 
@@ -81,7 +81,7 @@ module.exports = async(client) => {
     else home.setDisabled(false);
 
 
-      await currentPage.edit({
+      await i.edit({
         content: `${interaction.user}`,
         embeds: [pages[index]],
         components: [buttonRow]

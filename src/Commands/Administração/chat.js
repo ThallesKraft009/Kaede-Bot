@@ -3,6 +3,7 @@ const { ChannelType } = require("discord.js");
 module.exports = {
   name: "chat",
   description: "Gerencie os canais de texto de uma forma mais fácil",
+  default_member_permissions: "ManageChannels",
   type: 1,
   options: [
     {
