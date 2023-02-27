@@ -29,13 +29,7 @@ new ButtonBuilder()
 					.setCustomId(`verificar_${interaction.user.id}`)
 					.setLabel('Verificação')
           .setEmoji("<:emoji_7:1058911296189386843>")
-					.setStyle(ButtonStyle.Secondary),
-    new ButtonBuilder()
-					.setCustomId(`sugestao_${interaction.user.id}`)
-					.setLabel('Sugetões')
-          .setEmoji("💡")
 					.setStyle(ButtonStyle.Secondary)
-          .setDisabled(true)
     )
 
     interaction.editReply({

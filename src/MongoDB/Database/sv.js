@@ -2,7 +2,9 @@ const { Schema, model } = require("mongoose");
 
 const sv = new Schema({
     guildId: { type: String },
-
+    premium: {
+      form: { type: Boolean, default: false }
+    },
 
   ticket: {
     chat: { type: String },

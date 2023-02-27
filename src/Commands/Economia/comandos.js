@@ -98,6 +98,10 @@ module.exports = {
          required: true
         }
       ]
+    },{
+      name: "loja",
+      description: "Veja a loja de KaedeCoins",
+      type: 1
     }
   ],
 
@@ -128,13 +132,14 @@ let menu = new ActionRowBuilder()
 let embed = new EmbedBuilder()
     .setTitle("Loja da Kaede")
     .setDescription("Compre itens pra usar na economia e no servidor :D")
-    .setThumbnail("https://cdn.discordapp.com/attachments/1059093244014764053/1075153654660730950/1f6d2.png")
+    .setThumbnail(`${interaction.user.displayAvatarURL()}`)
     .setColor("Green")
+  .setTimestamp()
+      .setFooter({ text: `Id do usuário: ${interaction.user.id}` })
 
 interaction.reply({
-  embeds: [
-    embed
-  ],
+  content: `🛒 | ${interaction.user}`,
+  embeds: [embed],
   components: [menu]
 })
 

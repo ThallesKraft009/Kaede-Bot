@@ -11,7 +11,129 @@ client.on('interactionCreate', async (interaction) => {
 	if (!interaction.isStringSelectMenu()) return;
 
 
+if (interaction.customId === `loja_${interaction.user.id}`){
 
+  await interaction.deferUpdate()
+
+  let userdb = await client.userdb.findOne({
+         userID: interaction.user.id
+     })
+      
+     if(!userdb){
+         const newuser = new client.userdb({ userID: interaction.user.id })
+         await newuser.save();
+         
+         userdb = await client.userdb.findOne({ userID: interaction.user.id })
+     }
+  
+  let valor = interaction.values[0];
+  
+
+  if (valor === "banner") {
+
+    let { banners } = client.banners;
+    
+    let botoes = new ActionRowBuilder()
+			.addComponents(
+        new ButtonBuilder()
+        .setCustomId(`voltar_banner_1_${interaction.user.id}`)
+        .setLabel("Voltar")
+        .setStyle(ButtonStyle.Secondary)
+        .setDisabled(false),
+        new ButtonBuilder()
+        .setCustomId(`banner1_${interaction.user.id}`)
+        .setLabel("Comprar")
+        .setStyle(ButtonStyle.Primary),
+new ButtonBuilder()
+        .setCustomId(`proximo_banner_1_${interaction.user.id}`)
+        .setLabel("Próximo")
+        .setStyle(ButtonStyle.Secondary)
+        .setDisabled(false)
+      );
+
+    let author_1 = banners[0].author_id;
+    author_1 = client.users.cache.get(author_1);
+
+
+
+    let pg_1 = new EmbedBuilder()
+    .setTitle(`${banners[0].nome}`)
+    .setDescription(`Preço: ${client.numero(Number(`${banners[0].preço}`))}`)
+    .setImage(`${banners[0].link_url}`)
+    .setColor("Random")
+    .setFooter({ text: `Feito por ${author_1.username}`, iconURL: `${author_1.displayAvatarURL()}`})
+    .setTimestamp()
+
+    let author_2 = banners[1].author_id;
+    author_2 = client.users.cache.get(author_2);
+
+
+
+    let pg_2 = new EmbedBuilder()
+    .setTitle(`${banners[1].nome}`)
+    .setDescription(`Preço: ${client.numero(Number(`${banners[1].preço}`))}`)
+    .setImage(`${banners[1].link_url}`)
+    .setColor("Random")
+    .setFooter({ text: `Feito por ${author_2.username}`, iconURL: `${author_2.displayAvatarURL()}`})
+    .setTimestamp()
+
+    let author_3 = banners[1].author_id;
+    author_3 = client.users.cache.get(author_2);
+
+
+
+    let pg_3 = new EmbedBuilder()
+    .setTitle(`${banners[2].nome}`)
+    .setDescription(`Preço: ${client.numero(Number(`${banners[2].preço}`))}`)
+    .setImage(`${banners[2].link_url}`)
+    .setColor("Random")
+    .setFooter({ text: `Feito por ${author_3.username}`, iconURL: `${author_3.displayAvatarURL()}`})
+    .setTimestamp()
+
+    let embeds = [pg_1, pg_2, pg_3]
+    
+     await interaction.editReply({
+       embeds: [embeds[0]],
+       components: [botoes]
+     })
+
+ 
+
+  const collector = interaction.channel.createMessageComponentCollector({ componentType: ComponentType.Button, time: 60000 });
+
+
+collector.on('collect', async(int) => {
+
+let i = 0;
+
+    await int.deferUpdate()
+	
+if (int.customId === `proximo_banner_1_${int.user.id}`){
+
+  i = i + 1;
+
+  if (i === 3) i = 0;
+
+  await int.editReply({
+    embeds: [embeds[i]]
+  })
+  
+} else if (int.customId === `voltar_banner_1_${int.user.id}`){
+
+  i = i - 1;
+
+  if (i === -1) i = 3;
+
+  await int.editReply({
+    embeds: [embeds[i]]
+  })
+  
+}
+
+});
+    
+  }
+}
 
   
   if (interaction.customId === `cores_w_${interaction.user.id}`){

@@ -1,31 +1,76 @@
 const client = require("../bot.js");
 
-const { ActionRowBuilder, StringSelectMenuBuilder, EmbedBuilder } = require("discord.js");
+const { ActionRowBuilder, StringSelectMenuBuilder, EmbedBuilder, ButtonStyle, ButtonBuilder } = require("discord.js");
+
+const ms = require("ms");
 
 client.on("messageCreate", async(msg) => {
+
+  let embed = new EmbedBuilder()
+  .setAuthor({ name: `${msg.author.tag}`, iconURL: `${msg.author.displayAvatarURL()}`})
+  .setDescription(`Sou uma bot de configuração pra seu servidor e fui feita em [Node.js](https://nodejs.org/en/) utilizando o npm [Discord.js](https://discordjs.guide/).\nEstou em ${client.numero(client.guilds.cache.size)} servidores no total de ${client.numero(client.users.cache.size)} Usuários!`)
+  .setColor("Random")
+  .setTimestamp()
+  .setFooter({ text: `Veja minha lista de comandos interagindo com os botões!` })
+
+let menu = new ActionRowBuilder()
+			.addComponents(
+        new ButtonBuilder()
+        .setCustomId("adm")
+        .setLabel("Administração")
+        .setStyle(ButtonStyle.Secondary),
+new ButtonBuilder()
+        .setCustomId("economia")
+        .setLabel("Economia")
+        .setStyle(ButtonStyle.Secondary),
+new ButtonBuilder()
+        .setCustomId("util")
+        .setLabel("Utilidades")
+        .setStyle(ButtonStyle.Secondary)
+      );
   
-  if (msg.content === `${client.user}`) return msg.reply({
-    content: `<:kaede_3:1059170087141114016> | ${msg.author} meus comandos são em slashCommands (comandos com /)!`,
-    embeds: [
-      new EmbedBuilder()
-      .setAuthor(
-        { name: `${msg.author.tag}`, iconURL: `${msg.author.displayAvatarURL()}`}
-        )
-      .addFields({
-        name: `Adminstração`,
-        value: `\`/configurar\``
-      },{
-        name: `Economia`,
-        value: `\`/daily\`, \`/banco\`, \`/roubar\`, \`/apostar\`, \`/pagar\`, \`/sacar\`, \`/depositar\`, \`/kaedecoins-rank\``
-      },{
-        name: `Bot`,
-        value: `\`/ping\`, \`/kaede-info\``
-      })
-      .setColor("Yellow")
-    ]
+  if (msg.content === `${client.user}`) { 
+    let texto = await msg.reply({
+    content: `<:kaede_3:1059170087141114016> | ${msg.author}`,
+    embeds: [embed],
+    components: [menu]
   })
 
+    const collector = msg.channel.createMessageComponentCollector({ time: ms("1h") });
 
+collector.on('collect', async i => {
+
+  if (i.user.id === msg.author.id) {
+
+     await i.deferUpdate();
+
+      if (i.customId === "adm") {
+ 
+    let pg_adm = new EmbedBuilder()
+    .setAuthor({ name: `${msg.author.tag}`, iconURL: `${msg.author.displayAvatarURL()}`})
+    .addFields({
+      name: `/configurar`,
+      value: `Configure meus sistemas em seu servidor`
+    },{
+      name: `/chat trancar`,
+      value: `Tranque o canal de texto`
+    },{
+      name: `/chat abrir`,
+      value: `Abra o canal de texto`
+    })
+
+      }
+    
+  } else {
+
+    await i.reply({
+      content: `Espere um minuto.... você não é ${msg.author}! Sai daqui!`,
+      ephemeral: true
+    })
+  }
+});
+
+}
 
 
 
@@ -64,5 +109,7 @@ if (msg.content === `${client.user} segredo`) {
       content: `Descubra todos os segredos que eu tenho aqui!\n https://youtu.be/TGQo2SyDWW0`
     })
   }
+
+
 
 })

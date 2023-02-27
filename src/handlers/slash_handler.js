@@ -49,13 +49,13 @@ description_localizations: slashCommand.description_localizations,
 	(async () => {
 			try {
 
-      await rest.put(Routes.applicationCommands(CLIENT_ID), { body: [] }).then(() => console.log(chalk.blue('Carregandos slashCommands....')))
+    /*wait rest.put(Routes.applicationCommands(CLIENT_ID), { body: [] }).then(() => console.log(chalk.blue('Carregandos slashCommands....')))*/
 
 
 				await rest.put(
 					Routes.applicationCommands(CLIENT_ID), 
 					{ body: slashCommands }
-      );
+      )
 				console.log(chalk.yellow('Slash Commands registrados!'))
 			} catch (a){
     console.log(a)

@@ -1,4 +1,4 @@
-const { ApplicationCommandOptionType, PermissionsBitField } = require("discord.js");
+const { ApplicationCommandOptionType, PermissionsBitField, EmbedBuilder } = require("discord.js");
 const client = require("../bot.js");
 
 client.on("interactionCreate", async (interaction) => {
@@ -18,8 +18,6 @@ let userdb = await client.userdb.findOne({
          
          userdb = await client.userdb.findOne({ userID: interaction.user.id })
      }
-
-
 
   
   const command = client.commands.get(interaction.commandName);
