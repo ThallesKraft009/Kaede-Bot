@@ -44,4 +44,4 @@ const sv = new Schema({
 
 })
 
-module.exports = model("Kaede-Servers", sv);
+module.exports = model("Kaede-Guilds", sv);

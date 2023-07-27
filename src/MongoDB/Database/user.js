@@ -25,4 +25,4 @@ blacklist: {
 });
 
 
-module.exports = model("Kaede-Usuarios", userset);
+module.exports = model("Kaede-Users", userset);

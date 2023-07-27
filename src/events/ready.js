@@ -10,7 +10,6 @@ client.on("ready", async () => {
   const activities = [
 	{ name: `Melhorando o seu Servidor! | Cluster 1 [0]`, type: 0 }, 
 	{ name: `com ${client.users.cache.size} Usuários | Cluster 1 [0],`, type: 0 },
-  	{ name: `com a Catzinha! | Cluster 1 [0]`, type: 0 },
   { name: `Versão BETA | Cluster 1 [0]`, type: 0},
     {name: `Gerenciando ${client.guilds.cache.size} servidores | Cluster 1 [0]`, type: 0 }
 ];
@@ -39,13 +38,6 @@ setInterval(() => {
 	s++;
 }, 30 * 1000); 
 
-let embed = new EmbedBuilder().setTitle("Kaede Ready()").setDescription (`Acabei de ser iniciada no ping: **\`${client.ws.ping}ms\`** dentro de ${client.guilds.cache.size} servidores!`).setColor("Green")
 
-  let chat = client.channels.cache.get("1075836843318317106");
-  chat.send({
-    embeds: [
-     embed
-    ]
-  })
 
 })

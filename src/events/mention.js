@@ -4,6 +4,8 @@ const { ActionRowBuilder, StringSelectMenuBuilder, EmbedBuilder, ButtonStyle, Bu
 
 const ms = require("ms");
 
+const fs = require('fs');
+
 client.on("messageCreate", async(msg) => {
 
   let embed = new EmbedBuilder()
@@ -30,11 +32,42 @@ new ButtonBuilder()
       );
   
   if (msg.content === `${client.user}`) { 
-    let texto = await msg.reply({
-    content: `<:kaede_3:1059170087141114016> | ${msg.author}`,
-    embeds: [embed],
-    components: [menu]
+
+
+
+// Nome do arquivo onde o JSON foi salvo
+const nomeArquivo = 'src/commands.json';
+
+// Lendo o conteúdo do arquivo JSON
+fs.readFile(nomeArquivo, 'utf8', (err, data) => {
+  if (err) {
+    console.error('Erro ao ler o arquivo JSON:', err);
+  } else {
+    try {
+      
+      const dados = JSON.parse(data);
+
+      const objetoAjuda = dados.find(item => item.name === 'ajuda');
+
+
+      if (objetoAjuda) {
+        const idAjuda = objetoAjuda.id;
+
+        msg.reply({
+    content: `Você pode ver minha lista de comandos utilizando o comando </ajuda:${idAjuda}>`
   })
+        
+      } else {
+        console.log('Objeto com nome "ajuda" não encontrado.');
+      }
+    } catch (parseError) {
+      console.error('Erro ao analisar o JSON:', parseError);
+    }
+  }
+});
+      
+    
+    
 
     const collector = msg.channel.createMessageComponentCollector({ time: ms("1h") });
 

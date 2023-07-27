@@ -1,0 +1,400 @@
+[
+  {
+    "id": "1133895094794195029",
+    "application_id": "1133772943508377641",
+    "version": "1133895094794195036",
+    "default_member_permissions": "16",
+    "type": 1,
+    "name": "chat",
+    "name_localizations": null,
+    "description": "Gerencie os canais de texto de uma forma mais fácil",
+    "description_localizations": null,
+    "dm_permission": true,
+    "contexts": null,
+    "options": [
+      {
+        "type": 1,
+        "name": "fechar",
+        "name_localizations": null,
+        "description": "Tranque o canal de texto",
+        "description_localizations": null
+      },
+      {
+        "type": 1,
+        "name": "abrir",
+        "name_localizations": null,
+        "description": "Destranque o canal de texto",
+        "description_localizations": null
+      },
+      {
+        "type": 1,
+        "name": "criar",
+        "name_localizations": null,
+        "description": "Crie um canal de texto",
+        "description_localizations": null,
+        "options": [
+          {
+            "type": 3,
+            "name": "nome",
+            "name_localizations": null,
+            "description": "Qual o nome do canal de texto",
+            "description_localizations": null,
+            "required": true
+          }
+        ]
+      },
+      {
+        "type": 1,
+        "name": "deletar",
+        "name_localizations": null,
+        "description": "Delete um canal de texto",
+        "description_localizations": null,
+        "options": [
+          {
+            "type": 7,
+            "name": "chat",
+            "name_localizations": null,
+            "description": "Qual o canal de texto a see deletado",
+            "description_localizations": null,
+            "required": true
+          }
+        ]
+      }
+    ],
+    "nsfw": false
+  },
+  {
+    "id": "1133885673703735396",
+    "application_id": "1133772943508377641",
+    "version": "1133895094794195037",
+    "default_member_permissions": "32",
+    "type": 1,
+    "name": "configurar",
+    "name_localizations": null,
+    "description": "Configure meus sistemas em seu servidor",
+    "description_localizations": null,
+    "dm_permission": true,
+    "contexts": null,
+    "nsfw": false
+  },
+  {
+    "id": "1133895094794195030",
+    "application_id": "1133772943508377641",
+    "version": "1133895095020683264",
+    "default_member_permissions": "8192",
+    "type": 1,
+    "name": "sorteio",
+    "name_localizations": null,
+    "description": "Crie vários sorteios em seu servidor",
+    "description_localizations": null,
+    "dm_permission": true,
+    "contexts": null,
+    "options": [
+      {
+        "type": 1,
+        "name": "criar",
+        "name_localizations": null,
+        "description": "Inicie um novo sorteio em seu servidor",
+        "description_localizations": null,
+        "options": [
+          {
+            "type": 7,
+            "name": "chat",
+            "name_localizations": null,
+            "description": "O chat do sorteio",
+            "description_localizations": null,
+            "required": true
+          },
+          {
+            "type": 3,
+            "name": "premio",
+            "name_localizations": null,
+            "description": "O prêmio do sorteio",
+            "description_localizations": null,
+            "required": true
+          },
+          {
+            "type": 3,
+            "name": "tempo",
+            "name_localizations": null,
+            "description": "O tempo do sorteio, exemplo: 1m, 1h, 1d",
+            "description_localizations": null,
+            "required": true
+          },
+          {
+            "type": 10,
+            "name": "ganhadores",
+            "name_localizations": null,
+            "description": "Quantos ganhadores o sorteio vai ter",
+            "description_localizations": null
+          }
+        ]
+      },
+      {
+        "type": 1,
+        "name": "reroll",
+        "name_localizations": null,
+        "description": "Faça outra pessoa ganhar o sorteio",
+        "description_localizations": null,
+        "options": [
+          {
+            "type": 3,
+            "name": "id",
+            "name_localizations": null,
+            "description": "O ID da mensagem do sorteio",
+            "description_localizations": null,
+            "required": true
+          }
+        ]
+      },
+      {
+        "type": 1,
+        "name": "encerrar",
+        "name_localizations": null,
+        "description": "Encerre o sorteio atual",
+        "description_localizations": null,
+        "options": [
+          {
+            "type": 3,
+            "name": "id",
+            "name_localizations": null,
+            "description": "O ID da mensagem do sorteio",
+            "description_localizations": null,
+            "required": true
+          }
+        ]
+      }
+    ],
+    "nsfw": false
+  },
+  {
+    "id": "1134100584828510338",
+    "application_id": "1133772943508377641",
+    "version": "1134100584828510339",
+    "default_member_permissions": null,
+    "type": 1,
+    "name": "ajuda",
+    "name_localizations": null,
+    "description": "Veja minha lista de comandos",
+    "description_localizations": null,
+    "dm_permission": true,
+    "contexts": null,
+    "nsfw": false
+  },
+  {
+    "id": "1133895094794195031",
+    "application_id": "1133772943508377641",
+    "version": "1133895095020683265",
+    "default_member_permissions": null,
+    "type": 1,
+    "name": "kaede",
+    "name_localizations": null,
+    "description": "Comandos de informações sobre a Kaede",
+    "description_localizations": null,
+    "dm_permission": true,
+    "contexts": null,
+    "options": [
+      {
+        "type": 1,
+        "name": "ping",
+        "name_localizations": null,
+        "description": "Veja a Latência da Kaede",
+        "description_localizations": null
+      },
+      {
+        "type": 1,
+        "name": "info",
+        "name_localizations": null,
+        "description": "Veja minhas informações",
+        "description_localizations": null
+      }
+    ],
+    "nsfw": false
+  },
+  {
+    "id": "1133895094794195032",
+    "application_id": "1133772943508377641",
+    "version": "1133895095020683266",
+    "default_member_permissions": null,
+    "type": 1,
+    "name": "kaedecoins",
+    "name_localizations": null,
+    "description": "Comandos relacionados a minha economia",
+    "description_localizations": null,
+    "dm_permission": true,
+    "contexts": null,
+    "options": [
+      {
+        "type": 1,
+        "name": "daily",
+        "name_localizations": null,
+        "description": "Resgate KaedeCoins diários",
+        "description_localizations": null
+      },
+      {
+        "type": 1,
+        "name": "banco",
+        "name_localizations": null,
+        "description": "Veja quantas KaedeCoins você tem no bolso e no banco",
+        "description_localizations": null,
+        "options": [
+          {
+            "type": 6,
+            "name": "membro",
+            "name_localizations": null,
+            "description": "Selecione ou insira o ID do membro",
+            "description_localizations": null
+          }
+        ]
+      },
+      {
+        "type": 1,
+        "name": "pagar",
+        "name_localizations": null,
+        "description": "Pague KaedeCoins pra algum membro",
+        "description_localizations": null,
+        "options": [
+          {
+            "type": 6,
+            "name": "membro",
+            "name_localizations": null,
+            "description": "Selecione o membro ou insira o ID",
+            "description_localizations": null,
+            "required": true
+          },
+          {
+            "type": 10,
+            "name": "quantidade",
+            "name_localizations": null,
+            "description": "Quantas KaedeCoins quer enviar",
+            "description_localizations": null,
+            "required": true
+          }
+        ]
+      },
+      {
+        "type": 1,
+        "name": "depositar",
+        "name_localizations": null,
+        "description": "Para não ser roubado, deposite suas KaedeCoins",
+        "description_localizations": null,
+        "options": [
+          {
+            "type": 10,
+            "name": "quantidade",
+            "name_localizations": null,
+            "description": "Quantas KaedeCoins você quer depositar",
+            "description_localizations": null,
+            "required": true
+          }
+        ]
+      },
+      {
+        "type": 1,
+        "name": "sacar",
+        "name_localizations": null,
+        "description": "Saque suas KaedeCoins",
+        "description_localizations": null,
+        "options": [
+          {
+            "type": 10,
+            "name": "quantidade",
+            "name_localizations": null,
+            "description": "Quantas KaedeCoins você quer sacar",
+            "description_localizations": null,
+            "required": true
+          }
+        ]
+      },
+      {
+        "type": 1,
+        "name": "roubar",
+        "name_localizations": null,
+        "description": "Roube KaedeCoins de outros membros do servidor",
+        "description_localizations": null,
+        "options": [
+          {
+            "type": 6,
+            "name": "membro",
+            "name_localizations": null,
+            "description": "Selecione ou insira o ID do membro",
+            "description_localizations": null,
+            "required": true
+          }
+        ]
+      },
+      {
+        "type": 1,
+        "name": "apostar",
+        "name_localizations": null,
+        "description": "Aposte KaedeCoins com outros membros",
+        "description_localizations": null,
+        "options": [
+          {
+            "type": 6,
+            "name": "membro",
+            "name_localizations": null,
+            "description": "Selecione o membro ou insira o ID",
+            "description_localizations": null,
+            "required": true
+          },
+          {
+            "type": 10,
+            "name": "quantidade",
+            "name_localizations": null,
+            "description": "Quantas KaedeCoins quer apostar",
+            "description_localizations": null,
+            "required": true
+          }
+        ]
+      },
+      {
+        "type": 1,
+        "name": "loja",
+        "name_localizations": null,
+        "description": "Veja a loja de KaedeCoins",
+        "description_localizations": null
+      }
+    ],
+    "nsfw": false
+  },
+  {
+    "id": "1133895094794195033",
+    "application_id": "1133772943508377641",
+    "version": "1133895095020683267",
+    "default_member_permissions": null,
+    "type": 1,
+    "name": "perfil",
+    "name_localizations": null,
+    "description": "Informações sobre seu perfil na Kaede",
+    "description_localizations": null,
+    "dm_permission": true,
+    "contexts": null,
+    "options": [
+      {
+        "type": 1,
+        "name": "ver",
+        "name_localizations": null,
+        "description": "Veja seu perfil ou de outro membro",
+        "description_localizations": null,
+        "options": [
+          {
+            "type": 6,
+            "name": "membro",
+            "name_localizations": null,
+            "description": "Selecione o membro ou insira o ID",
+            "description_localizations": null
+          }
+        ]
+      },
+      {
+        "type": 1,
+        "name": "sobremim",
+        "name_localizations": null,
+        "description": "Altere seu sobremim",
+        "description_localizations": null
+      }
+    ],
+    "nsfw": false
+  }
+]

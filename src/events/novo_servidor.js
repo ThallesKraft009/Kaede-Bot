@@ -3,7 +3,7 @@ const { EmbedBuilder } = require("discord.js");
 
 client.on("guildCreate", async(servidor) => {
 
-    let chat = client.channels.cache.get("1075510255422816327")
+    let chat = client.channels.cache.get("1133499751757795508")
 
 let dono = servidor.owner_id;
   dono = client.users.cache.get(`${dono}`)
@@ -11,7 +11,7 @@ let dono = servidor.owner_id;
   let description = servidor.description;
   
   let embed = new EmbedBuilder()
-  .setAuthor({ name: `${servidor.name}`, iconURL: `${servidor.iconURL()}` })
+  .setAuthor({ name: `${servidor.name}` })
   .setDescription(`${description || ""}`)
   .addFields({
     name: "Dono(a)", value: `${dono.tag}`,
